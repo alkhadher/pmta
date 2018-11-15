@@ -5,7 +5,7 @@ rpm -Uvh PowerMTA.*.rpm
 
 \cp config /etc/pmta/config
 
-
-\cp private.pem /etc/pmta/dkim/blingnova.blingnova.net.pem
+mkdir -p /etc/pmta/dkim/
+\cp pem/private.pem /etc/pmta/dkim/blingnova.blingnova.net.pem
 
 ```
