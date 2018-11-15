@@ -1,6 +1,6 @@
 
 
-##### CentOS Server 关闭ipv6
+##### CentOS 关闭ipv6
 ```
 vi /etc/sysctl.conf
 net.ipv6.conf.all.disable_ipv6=1
