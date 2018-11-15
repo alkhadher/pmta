@@ -1,4 +1,4 @@
-### 安装PMTA
+#### 安装PMTA
 ```
 rpm -Uvh PowerMTA.*.rpm
 ```
