@@ -9,3 +9,8 @@ mkdir -p /etc/pmta/dkim/
 \cp pem/private.pem /etc/pmta/dkim/blingnova.blingnova.net.pem
 
 ```
+
+```
+DKIM TXT记录
+
+```
