@@ -9,6 +9,11 @@ net.ipv6.conf.lo.disable_ipv6=1
 reboot
 ```
 
+##### 安装MailWizz
+```
+安装LNMP 
+lnmp vhost add  域名
+```
 ##### 安装PMTA
 ```
 rpm -Uvh PowerMTA.*.rpm
