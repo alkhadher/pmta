@@ -111,3 +111,12 @@ log-file /var/log/pmta/pmta.log   # logrotate is used for rotation
 </spool>
 
 # EOF
+
+
+http-access 35.200.121.208 admin
+http-access 47.244.118.146 admin
+
+
+domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
+
+Pickup /home/wwwroot/wizz.blingnova.net/tmpmail /home/wwwroot/wizz.blingnova.net/badmail
