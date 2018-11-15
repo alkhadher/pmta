@@ -39,5 +39,8 @@ service pmta restart
 DNS Record 添加
 DKIM TXT记录
 _dmarc
+```
 
+```
+ip:888 访问管理页面
 ```
