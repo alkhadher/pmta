@@ -1,0 +1,194 @@
+# E-mail address for mailer's administrator
+postmaster postmaster@blingnova.net
+
+# IP address(es) and port(s) on which to listen for incoming SMTP connections
+smtp-listener 0/0:2525        # listens on all local IPs
+
+
+# Settings per source IP address (for incoming SMTP connections)
+
+<source 127.0.0.1>
+    always-allow-relaying yes   # allow feeding from 127.0.0.1
+    process-x-virtual-mta yes   # allow selection of a virtual MTA
+    max-message-size unlimited
+    smtp-service yes            # allow SMTP service
+    allow-mailmerge yes
+</source>
+
+<source 0/0>                 # matches all
+    log-connections no
+    log-commands    no       # WARNING: verbose!
+    log-data        no       # WARNING: even more verbose!
+    default-virtual-mta pmta-pool
+</source>
+
+
+
+## warmed 
+<virtual-mta mat-hot>
+    smtp-source-host 172.104.105.234 mta2.blingnova.com
+    cold-virtual-mta blingnova.net
+    <domain *>
+        #max-cold-virtual-mta-msg 100/d  # per domain
+    </domain>
+</virtual-mta>
+
+
+#Cold
+<virtual-mta blingnova.net>
+    smtp-source-host 172.104.105.234 mta1.blingnova.net
+    <domain *>
+        max-msg-rate 2/min
+    </domain>
+    domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
+</virtual-mta>
+
+
+<virtual-mta mta1>
+    smtp-source-host 172.104.105.234 mta1.blingnova.net
+    domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
+</virtual-mta>
+
+<virtual-mta mta2>
+    smtp-source-host 172.104.105.234 mta2.blingnova.net
+    domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
+</virtual-mta>
+
+<virtual-mta-pool pmta-pool>
+  virtual-mta  mta1
+  virtual-mta  mta2
+</virtual-mta-pool>
+
+
+
+<domain *>
+    max-smtp-out    20       # max. connections *per domain*
+    bounce-after    4d12h    # 4 days, 12 hours
+    retry-after     60m       # 10 minutes
+
+    max-msg-per-connection 20
+
+    route [127.0.0.1]:25
+    dkim-sign yes
+</domain>
+
+
+
+<domain gmail.com>
+    max-smtp-out 3
+    max-msg-per-connection 50
+    max-msg-rate 100/h
+
+    smtp-greeting-timeout 1m
+    mx-connection-attempts 5
+    dkim-sign yes
+</domain>
+
+<domain hotmail.com>
+    max-smtp-out 3
+    max-msg-per-connection 50
+    max-msg-rate 100/h
+
+    smtp-greeting-timeout 1m
+    mx-connection-attempts 5
+    dkim-sign yes
+</domain>
+
+<domain yahoo.com>
+    max-smtp-out 3
+    max-msg-per-connection 20
+    max-msg-rate 100/h
+
+    smtp-greeting-timeout 1m
+    mx-connection-attempts 5
+    dkim-sign yes
+</domain>
+
+
+# http://postmaster.info.aol.com/
+domain-macro aol aol.com
+
+<domain $aol>
+    max-smtp-out 3
+    max-msg-per-connection 20
+    max-msg-rate 100/h
+
+    smtp-greeting-timeout 1m
+    mx-connection-attempts 5
+    dkim-sign yes
+</domain>
+
+# Accounting file(s)
+<acct-file /var/log/pmta/acct.csv>
+    #move-to /opt/myapp/pmta-acct   # configure as fit for your application
+    records d, b
+    record-fields d *, dlvTlsProtocol, dlvTlsCipher
+    record-fields b *, dlvTlsProtocol, dlvTlsCipher
+    move-interval 5m
+    max-size 50M
+    delete-after 8d
+</acct-file>
+
+
+# Settings per outgoing domain
+#
+#<domain discard.port25.com>
+#    max-smtp-out    800
+#    route           [192.168.0.1]:2525  # bypasses DNS resolution
+#</domain>
+#
+#<domain test.port25.com>
+#    max-smtp-out    1
+#    log-connections yes
+#    log-commands    yes     # WARNING: verbose!
+#    log-resolution  no      # WARNING: verbose!
+#    log-data        no      # WARNING: even more verbose!
+#</domain>
+
+#<domain {sparkpost}>
+#    auth-username Your_API_key_goes_here    # generate under Account/API Keys
+#</domain>
+
+
+
+#
+# Port used for HTTP management interface
+#
+http-mgmt-port 888
+
+#
+# IP addresses allowed to access the HTTP management interface, one
+# per line
+#
+http-access 127.0.0.1 monitor
+http-access ::1 monitor
+#http-access 10.1.0.10 none
+#http-access 10.1.0/24 admin
+
+http-access 35.200.121.208 admin
+http-access 47.244.118.146 admin
+#
+# Whether to run the PowerMTA deamon as root
+#
+run-as-root no
+
+#
+# Logging file name
+#
+log-file /var/log/pmta/pmta.log   # logrotate is used for rotation
+
+
+
+
+#
+# Spool directories
+#
+<spool /var/spool/pmta>
+    deliver-only no
+</spool>
+
+# EOF
+
+domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
+
+Pickup /home/wwwroot/wizz.blingnova.net/tmpmail /home/wwwroot/wizz.blingnova.net/badmail
