@@ -42,6 +42,6 @@ _dmarc
 ```
 
 ```
-pmtahttpd 负责面板，未找到重启该服务的方式。所以暂用重启机器 reboot
+stats面板默认端口号时8080，修改为888，pmtahttpd 负责stats面板，未找到重启该服务的方式。所以暂用重启机器 reboot
 ip:888 访问管理页面
 ```
