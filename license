@@ -1,0 +1,14 @@
+product: PowerMTA
+version: 4.5
+platform: linux-intel
+units: 200
+options: evaluation
+mac: F23C916F6B14
+licensee: ThriveMobi Network Technology Co Ltd
+serial: ThriveMobi Network Technology Co Ltd-665191
+comment: PMTA Evaluation LAK
+issued: 2018-10-30
+expires: 2018-11-30
+copyright: Port25 Solutions, Inc.  All Rights Reserved
+check: 1-ZFA3BkemfgE0IcYzM+Wq173Gbigtin36qTfJ9ShDj61eW8MU
+       IEh9xA8kD02fe2ic1pXgrUhxC5wnmxPv0Adb+w==
