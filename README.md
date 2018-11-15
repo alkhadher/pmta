@@ -13,6 +13,9 @@ reboot
 ```
 安装LNMP 
 lnmp vhost add  域名
+上传程序文件
+通过PHPMyAdmin导入备份数据
+登陆测试
 ```
 ##### 安装PMTA
 ```
