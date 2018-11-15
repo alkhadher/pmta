@@ -79,7 +79,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
     max-msg-per-connection 50
     max-msg-rate 100/h
 
-    smtp-greeting-timeout 1m
+    smtp-greeting-timeout 5m
     mx-connection-attempts 5
     dkim-sign yes
 </domain>
@@ -89,7 +89,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
     max-msg-per-connection 50
     max-msg-rate 100/h
 
-    smtp-greeting-timeout 1m
+    smtp-greeting-timeout 5m
     mx-connection-attempts 5
     dkim-sign yes
 </domain>
@@ -99,7 +99,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
     max-msg-per-connection 20
     max-msg-rate 100/h
 
-    smtp-greeting-timeout 1m
+    smtp-greeting-timeout 5m
     mx-connection-attempts 5
     dkim-sign yes
 </domain>
@@ -113,7 +113,7 @@ domain-macro aol aol.com
     max-msg-per-connection 20
     max-msg-rate 100/h
 
-    smtp-greeting-timeout 1m
+    smtp-greeting-timeout 5m
     mx-connection-attempts 5
     dkim-sign yes
 </domain>
