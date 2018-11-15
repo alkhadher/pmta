@@ -13,7 +13,7 @@ reboot
 ```
 安装LNMP 
 lnmp vhost add  域名
-上传程序文件
+上传程序文件,完整走一遍安装
 通过PHPMyAdmin导入备份数据
 登陆测试
 ```
