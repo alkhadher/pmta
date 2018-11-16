@@ -20,9 +20,9 @@ mkdir -p  /var/mail/vhosts/$domain/abuse
 echo abuse@$domain:{plain}$password >> /etc/dovecot/users
 echo abuse@$domain $domain/abuse/ >> /etc/postfix/virtual_mailbox_map
 	
-mkdir -p  /var/mail/vhosts/$domain/postermaster
-echo postermaster@$domain:{plain}$password >> /etc/dovecot/users
-echo postermaster@$domain $domain/postermaster/ >> /etc/postfix/virtual_mailbox_map
+mkdir -p  /var/mail/vhosts/$domain/postmaster
+echo postmaster@$domain:{plain}$password >> /etc/dovecot/users
+echo postmaster@$domain $domain/postmaster/ >> /etc/postfix/virtual_mailbox_map
 	
 chown -R vmail:vmail /var/mail/*
 postmap /etc/postfix/virtual_mailbox_map
