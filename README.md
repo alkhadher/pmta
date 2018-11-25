@@ -47,6 +47,7 @@ _dmarc
 ```
 stats面板默认端口号时8080，修改为888，pmtahttpd 负责stats面板，未找到重启该服务的方式。所以暂用重启机器 reboot
 ip:888 访问管理页面
+track 域名需要追加到ngxin conf hostname ,勿忘记
 ```
 
 ##### PMTA卸载
