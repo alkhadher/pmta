@@ -12,7 +12,9 @@ reboot
 ##### 安装MailWizz
 ```
 安装LNMP 
-lnmp vhost add  域名
+lnmp vhost add  域名 
+track 域名需要追加到ngxin conf hostname ,勿忘记
+
 上传程序文件,完整走一遍安装
 通过PHPMyAdmin导入备份数据
 登陆测试
@@ -47,7 +49,6 @@ _dmarc
 ```
 stats面板默认端口号时8080，修改为888，pmtahttpd 负责stats面板，未找到重启该服务的方式。所以暂用重启机器 reboot
 ip:888 访问管理页面
-track 域名需要追加到ngxin conf hostname ,勿忘记
 ```
 
 ##### PMTA卸载
