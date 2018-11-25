@@ -1,0 +1,154 @@
+#
+# $Id: config 16786 2017-04-07 20:19:49Z juan $
+# Sample PowerMTA configuration file
+#
+
+#
+# E-mail address for mailer's administrator (please specify!)
+#
+#postmaster you@your.domain
+
+#
+# IP address(es) and port(s) on which to listen for incoming SMTP connections
+#
+smtp-listener 0/0:2525        # listens on all local IPs
+
+#
+# Settings per source IP address (for incoming SMTP connections)
+#
+<source 127.0.0.1>
+    always-allow-relaying yes   # allow feeding from 127.0.0.1
+    process-x-virtual-mta yes   # allow selection of a virtual MTA
+    max-message-size unlimited
+    smtp-service yes            # allow SMTP service
+</source>
+
+<source ::1>
+    always-allow-relaying yes   # allow feeding from ::1
+    process-x-virtual-mta yes   # allow selection of a virtual MTA
+    max-message-size unlimited
+    smtp-service yes            # allow SMTP service
+</source>
+
+<source 0/0>                 # matches all
+    log-connections no
+    log-commands    no       # WARNING: verbose!
+    log-data        no       # WARNING: even more verbose!
+</source>
+
+#
+# SMTP users (authenticated via SMTP AUTH)
+#
+#<smtp-user API>
+#    password "changeme"
+#</smtp-user>
+
+#
+# Settings per outgoing domain
+#
+#<domain discard.port25.com>
+#    max-smtp-out    800
+#    route           [192.168.0.1]:2525  # bypasses DNS resolution
+#</domain>
+#
+#<domain test.port25.com>
+#    max-smtp-out    1
+#    log-connections yes
+#    log-commands    yes     # WARNING: verbose!
+#    log-resolution  no      # WARNING: verbose!
+#    log-data        no      # WARNING: even more verbose!
+#</domain>
+
+#<domain {sparkpost}>
+#    auth-username Your_API_key_goes_here    # generate under Account/API Keys
+#</domain>
+
+<domain *>
+    max-smtp-out    20       # max. connections *per domain*
+    bounce-after    4d12h    # 4 days, 12 hours
+    retry-after     10m      # 10 minutes
+</domain>
+
+#
+# Port used for HTTP management interface
+#
+http-mgmt-port 8080
+
+#
+# IP addresses allowed to access the HTTP management interface, one
+# per line
+#
+http-access 127.0.0.1 monitor
+http-access ::1 monitor
+#http-access 10.1.0.10 none
+#http-access 10.1.0/24 admin
+
+#
+# Whether to run the PowerMTA deamon as root
+#
+run-as-root no
+
+#
+# Logging file name
+#
+log-file /var/log/pmta/pmta.log   # logrotate is used for rotation
+
+#
+# Accounting file(s)
+#
+<acct-file /var/log/pmta/acct.csv>
+#    move-to /opt/myapp/pmta-acct   # configure as fit for your application
+    move-interval 5m
+    max-size 50M
+    delete-after 8d
+</acct-file>
+
+#
+# Spool directories
+#
+<spool /var/spool/pmta>
+    deliver-only no
+</spool>
+
+# EOF
+
+
+http-access 35.200.121.208 admin
+http-access 47.244.118.146 admin
+
+
+domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
+
+Pickup /home/wwwroot/wizz.blingnova.net/tmpmail /home/wwwroot/wizz.blingnova.net/badmail
+
+<smtp-user info>
+  password rS7PydIBmIw%!nB&X
+  source {auth}
+</smtp-user>
+
+<smtp-user info@blingnova.net>
+  password rS7PydIBmIw%!nB&X
+  source {auth}
+</smtp-user>
+
+
+<source {auth}>
+  always-allow-relaying yes # allow feeding for defined users
+  process-x-virtual-mta yes # allow selection of a VirtualMTA
+  max-message-size 0 # 0 implies no cap, in bytes
+  smtp-service yes # allow SMTP service
+  require-auth true
+</source>
+
+<source 0/0>
+  allow-unencrypted-plain-auth yes
+</source>
+
+
+<domain *>
+    dkim-sign yes
+</domain>
+
+
+
+
