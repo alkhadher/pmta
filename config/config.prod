@@ -38,7 +38,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
 <virtual-mta blingnova.net>
     smtp-source-host 172.104.105.234 mta1.blingnova.net
     <domain *>
-        max-msg-rate 2/min
+        max-msg-rate 20/min
     </domain>
     domain-key blingnova, *, /etc/pmta/dkim/blingnova.blingnova.net.pem
 </virtual-mta>
@@ -77,7 +77,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
 <domain gmail.com>
     max-smtp-out 3
     max-msg-per-connection 50
-    max-msg-rate 100/h
+    max-msg-rate 360/h
 
     smtp-greeting-timeout 5m
     mx-connection-attempts 5
@@ -87,7 +87,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
 <domain hotmail.com>
     max-smtp-out 3
     max-msg-per-connection 50
-    max-msg-rate 100/h
+    max-msg-rate 360/h
 
     smtp-greeting-timeout 5m
     mx-connection-attempts 5
@@ -97,7 +97,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
 <domain yahoo.com>
     max-smtp-out 3
     max-msg-per-connection 20
-    max-msg-rate 100/h
+    max-msg-rate 360/h
 
     smtp-greeting-timeout 5m
     mx-connection-attempts 5
