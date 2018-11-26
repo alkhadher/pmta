@@ -68,7 +68,7 @@ smtp-listener 0/0:2525        # listens on all local IPs
 
     max-msg-per-connection 20
 
-    route [127.0.0.1]:25
+    route [127.0.0.1]:2525
     dkim-sign yes
 </domain>
 
