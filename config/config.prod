@@ -67,8 +67,6 @@ smtp-listener 0/0:2525        # listens on all local IPs
     retry-after     60m       # 10 minutes
 
     max-msg-per-connection 20
-
-    route [127.0.0.1]:2525
     dkim-sign yes
 </domain>
 
