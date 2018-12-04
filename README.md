@@ -20,7 +20,7 @@ track 域名需要追加到ngxin conf hostname ,勿忘记
 登陆测试
 ```
 
-##### 安装Mumara 
+##### 安装Mumara (该版本ionCube 暂不支持PHP7 )
 ```
 安装LNMP 
 安装ioncube
