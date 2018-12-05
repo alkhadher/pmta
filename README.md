@@ -12,6 +12,20 @@ sysctl -p /etc/sysctl.conf
 reboot
 ```
 
+##### 关闭防火墙
+
+```
+查看防火墙状态
+firewall-cmd --state
+
+停止firewall
+systemctl stop firewalld.service
+
+禁止firewall开机启动
+systemctl disable firewalld.service
+```
+
+
 ##### 安装MailWizz
 ```
 安装LNMP 
