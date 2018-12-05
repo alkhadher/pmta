@@ -50,6 +50,8 @@ lnmp vhost add  域名
 
 ##### 安装PMTA
 ```
+wget https://s3-us-west-1.amazonaws.com/origin-static/pmta/PowerMTA-4.5r11.zip
+
 rpm -Uvh PowerMTA*.rpm
 \cp etc/pmta/license /etc/pmta/license
 \cp usr/sbin/pmtad /usr/sbin/pmtad
