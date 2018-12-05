@@ -38,7 +38,7 @@ lnmp vhost add  域名
 ```
 rpm -Uvh PowerMTA*.rpm
 \cp etc/pmta/license /etc/pmta/license
-
+\cp usr/sbin/pmtad /usr/sbin/pmtad
 \cp config /etc/pmta/config
 
 mkdir -p /etc/pmta/dkim/
