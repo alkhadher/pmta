@@ -41,6 +41,10 @@ track 域名需要追加到ngxin conf hostname ,勿忘记
 ```
 安装LNMP 
 安装ioncube
+
+cd /root/lnmp1.5
+./addons.sh 
+
 lnmp vhost add  域名 
 上传程序文件,完整走一遍安装
 
