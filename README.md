@@ -30,6 +30,8 @@ systemctl disable firewalld.service
 ```
 安装LNMP 
 lnmp vhost add  域名 
+innodb_buffer_size 注意设置，以免MySQL崩溃
+
 track 域名需要追加到ngxin conf hostname ,勿忘记
 
 上传程序文件,完整走一遍安装
