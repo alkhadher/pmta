@@ -30,7 +30,6 @@ systemctl disable firewalld.service
 ```
 安装LNMP 
 lnmp vhost add  域名 
-innodb_buffer_size 注意设置，以免MySQL崩溃
 
 track 域名需要追加到ngxin conf hostname ,勿忘记
 
@@ -43,9 +42,9 @@ track 域名需要追加到ngxin conf hostname ,勿忘记
 ```
 安装LNMP 
 安装ioncube
-
 启用php exec
-
+innodb_buffer_size 注意设置，以免MySQL崩溃
+安装imap 模块
 cd /root/lnmp1.5
 ./addons.sh 
 
