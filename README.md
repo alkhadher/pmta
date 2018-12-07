@@ -42,6 +42,8 @@ track 域名需要追加到ngxin conf hostname ,勿忘记
 安装LNMP 
 安装ioncube
 
+启用php exec
+
 cd /root/lnmp1.5
 ./addons.sh 
 
