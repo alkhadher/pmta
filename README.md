@@ -12,19 +12,15 @@ reboot
 ##### 关闭防火墙
 
 ```
-查看防火墙状态
 firewall-cmd --state
-
-停止firewall
 systemctl stop firewalld.service
-
-禁止firewall开机启动
 systemctl disable firewalld.service
 ```
 
 
 ##### 安装MailWizz
 ```
+yum install -y wget screen
 安装LNMP 
 lnmp vhost add  域名 
 proc_open 函数启用
