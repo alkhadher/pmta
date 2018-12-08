@@ -21,7 +21,10 @@ systemctl disable firewalld.service
 ##### 安装MailWizz
 ```
 yum install -y wget screen
-安装LNMP 
+screen -S lnmp
+
+wget http://soft.vpser.net/lnmp/lnmp1.5.tar.gz -cO lnmp1.5.tar.gz && tar zxf lnmp1.5.tar.gz && cd lnmp1.5 && ./install.sh lnmp
+ 
 lnmp vhost add  域名 
 proc_open 函数启用
 track 域名需要追加到ngxin conf hostname ,勿忘记
