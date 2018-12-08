@@ -87,13 +87,6 @@ rpm -Uvh PowerMTA*.rpm
 mkdir -p /etc/pmta/dkim/
 \cp pem/private.pem /etc/pmta/dkim/blingnova.blingnova.net.pem
 
-#权限问题，所以放置在了Vhost目录下
-mkdir -p /home/wwwroot/wizz.blingnova.net/tmpmail 
-mkdir -p /home/wwwroot/wizz.blingnova.net/badmail
-chown -R www /home/wwwroot
-chgrp -R www /home/wwwroot
-
-
 service pmta start
 service pmta restart
 ```
