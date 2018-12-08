@@ -25,6 +25,28 @@ screen -S lnmp
 
 wget http://soft.vpser.net/lnmp/lnmp1.5.tar.gz -cO lnmp1.5.tar.gz && tar zxf lnmp1.5.tar.gz && cd lnmp1.5 && ./install.sh lnmp
  
+ 
+安装imap
+
+cd /root/lnmp1.5/src
+tar -jxvf php-*.*.tar.bz2
+cd /root/lnmp1.5/src/php**/ext/imap
+
+yum -y install epel-release
+yum -y install libc-client-devel
+ln -s /usr/lib64/libc-client.so /usr/lib/libc-client.so
+
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config --with-kerberos --with-imap-ssl
+make && make install
+
+vim /usr/local/php/etc/php.ini
+echo 'extension=imap.so' >> /usr/local/php/etc/php.ini
+
+disable_functions 删除proc_open函数
+lnmp restart
+
+
 lnmp vhost add  域名 
 proc_open 函数启用
 track 域名需要追加到ngxin conf hostname ,勿忘记
