@@ -43,7 +43,7 @@ make && make install
 vim /usr/local/php/etc/php.ini
 echo 'extension=imap.so' >> /usr/local/php/etc/php.ini
 
-disable_functions 删除proc_open函数
+disable_functions 删除exec , proc_open函数
 lnmp restart
 
 
