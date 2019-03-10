@@ -6,7 +6,13 @@ echo 'net.ipv6.conf.all.disable_ipv6=1' >> /etc/sysctl.conf
 echo 'net.ipv6.conf.default.disable_ipv6=1' >> /etc/sysctl.conf
 echo 'net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
-reboot
+reboot  这个方法不生效
+
+
+sed -i "s/GRUB_CMDLINE_LINUX=\"console=tty/GRUB_CMDLINE_LINUX=\"ipv6.disable=1 console=tty/g" /etc/default/grub
+cat /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg && reboot
+
 ```
 
 ##### 关闭防火墙
