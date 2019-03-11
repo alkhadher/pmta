@@ -19,6 +19,8 @@ sed -i "s/GRUB_CMDLINE_LINUX=\"console=tty/GRUB_CMDLINE_LINUX=\"ipv6.disable=1 c
 firewall-cmd --state
 systemctl stop firewalld.service
 systemctl disable firewalld.service
+
+firewall-cmd --state #仍会显示Running ，但实际上已经关闭
 ```
 
 
